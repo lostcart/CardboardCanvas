@@ -8,6 +8,7 @@ import android.graphics.PorterDuff;
 /**
  * Helper class for drawing 2D objects in a 3D space.  It has 2 canvases, one for each eye, it lets you draw
  * a bitmap and set it's apparent depth.  Objects still need to be drawn in the correct draw order
+ *
  * @author luke@ustwo.com
  */
 public class CardboardCanvas {
@@ -20,7 +21,7 @@ public class CardboardCanvas {
     /* The main canvas we draw everything to */
     private Canvas mCanvas;
 
-    /*Canvases for the left and right side of the screen*/
+    /* Canvases for the left and right side of the screen */
     private Canvas mLeftCanvas;
     private Canvas mRightCanvas;
 
@@ -46,6 +47,7 @@ public class CardboardCanvas {
 
     /**
      * Constructor that lets you set the depth scale
+     *
      * @param depthScale The scale factor for the depth effect
      */
     public CardboardCanvas(int depthScale) {
@@ -54,6 +56,7 @@ public class CardboardCanvas {
 
     /**
      * Set up the left and right eye canvases
+     *
      * @param canvas The canvas the left and right eye canvases should be drawn to
      */
     public void setupCanvas(Canvas canvas) {
@@ -71,6 +74,7 @@ public class CardboardCanvas {
     /**
      * Sets the main canvas and clears the left and right ones.
      * The canvas needs to be set each frame
+     *
      * @param canvas The main canvas to draw to
      */
     public void refreshCanvas(Canvas canvas) {
@@ -83,6 +87,7 @@ public class CardboardCanvas {
 
     /**
      * Add a bitmap to the left and right canvases at a given position and depth
+     *
      * @param bitmap The bitmap to add
      * @param left Left position of the bitmap
      * @param top Top position of the bitmap
