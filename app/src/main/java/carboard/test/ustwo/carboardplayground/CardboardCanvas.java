@@ -21,12 +21,12 @@ public class CardboardCanvas {
     /* The main canvas we draw everything to */
     private Canvas mCanvas;
 
-    /* Canvases for the left and right side of the screen */
+    /*Canvases for the left and right side of the screen*/
     private Canvas mLeftCanvas;
     private Canvas mRightCanvas;
 
-    /* The bitmaps that we draw to the main canvas which contain the data drawn to the left and
-    * right canvases */
+    /* The bitmaps that we draw to the main canvas which contain the data drawn
+     to the left and right canvases */
     private Bitmap mLeftEyeBitmap;
     private Bitmap mRightEyeBitmap;
 
@@ -35,13 +35,13 @@ public class CardboardCanvas {
     private int mEyeHeight;
 
     /* The amount we scale the depth effect by, bigger means the furthest away something can be
-    * is increased */
+     is increased */
     private int mDepthScale;
 
     /**
      * Default constructor, sets depth scale to the default value
      */
-    public CardboardCanvas(){
+    public CardboardCanvas() {
         mDepthScale = DEPTH_SCALE_DEFAULT;
     }
 
@@ -79,7 +79,6 @@ public class CardboardCanvas {
      */
     public void refreshCanvas(Canvas canvas) {
         mCanvas = canvas;
-
         // Clear the left and right canvases
         mLeftCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         mRightCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
@@ -89,11 +88,11 @@ public class CardboardCanvas {
      * Add a bitmap to the left and right canvases at a given position and depth
      *
      * @param bitmap The bitmap to add
-     * @param left Left position of the bitmap
-     * @param top Top position of the bitmap
-     * @param depth How far away the bitmap should appear value should be between 0 and 1 where 0 is the closer
+     * @param left   Left position of the bitmap
+     * @param top    Top position of the bitmap
+     * @param depth  How far away the bitmap should appear value should be between 0 and 1 where 0 is the closer
      */
-    public void addBitmap(Bitmap bitmap, int left, int top, float depth) {
+    public void addBitmap(Bitmap bitmap, float left, float top, float depth) {
         float scaledDepth = ((1.0f - depth) * mDepthScale) / 2.0f;
         mLeftCanvas.drawBitmap(bitmap, left + scaledDepth, (getEyeCanvasHeight() - bitmap.getHeight()) - top, null);
         mRightCanvas.drawBitmap(bitmap, left - scaledDepth, (getEyeCanvasHeight() - bitmap.getHeight()) - top, null);
