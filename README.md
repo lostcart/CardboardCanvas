@@ -24,7 +24,14 @@ and 1 is the furthest possible
     @Override
     public void draw(Canvas canvas) {
    	    ...
-        // Set the canvas each frame
+
+   	    // Setup the cardboard canvas the first time draw is called
+   	 	if (!mSetup) {
+            mCardboardCanvas.setupCanvas(canvas);
+            mSetup = true;
+        }
+
+        // Refresh the canvas each frame
         mCardboardCanvas.refreshCanvas(canvas);
 
         // Add the images to the cardboard canvas
